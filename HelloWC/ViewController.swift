@@ -24,11 +24,14 @@ class ViewController: UIViewController {
         
         var emoji = ["👾":"Monster", "👻":"Ghost", "🤓":"Smile", "🤖":"BOT"]
         
-        let selectedButton = sender
+        //let selectedButton = sender.titleLabel!.text
+        if let SB = sender.titleLabel?.text
+        {
+            let alertController = UIAlertController(title:SB, message: emoji[SB], preferredStyle: UIAlertControllerStyle.alert)
         
-        let alertController = UIAlertController(title:"Welcome", message: "Hello", preferredStyle: UIAlertControllerStyle.alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-        present(alertController, animated: true, completion: nil)
+            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            present(alertController, animated: true, completion: nil)
+        }
     }
 
     
