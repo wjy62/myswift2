@@ -22,13 +22,21 @@ class ViewController: UIViewController {
     
     @IBAction func showMessage(sender:UIButton){
         
-        var emoji = ["👾":"Monster", "👻":"Ghost", "🤓":"Smile", "🤖":"BOT"]
+        var emoji = ["👾":"Monster", "👻":"Ghost", "🤓":"Smile"]
+        //var emoji = ["👾":"Monster", "👻":"Ghost", "🤓":"Smile", "🤖":"BOT"]
         
         //let selectedButton = sender.titleLabel!.text
         if let SB = sender.titleLabel?.text
         {
             let alertController = UIAlertController(title:SB, message: emoji[SB], preferredStyle: UIAlertControllerStyle.alert)
         
+            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            present(alertController, animated: true, completion: nil)
+        }
+        
+        else{
+            let alertController = UIAlertController(title:"SB", message: "emoji[SB]"			, preferredStyle: UIAlertControllerStyle.alert)
+            
             alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             present(alertController, animated: true, completion: nil)
         }
