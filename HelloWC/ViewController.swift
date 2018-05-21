@@ -20,7 +20,7 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func showMessage(sender:UIButton){
+    @IBAction func showMessage2(sender:UIButton){
         
         var emoji = ["👾":"Monster", "👻":"Ghost", "🤓":"Smile"]
         //var emoji = ["👾":"Monster", "👻":"Ghost", "🤓":"Smile", "🤖":"BOT"]
