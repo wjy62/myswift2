@@ -8,7 +8,25 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    //var nameList = ["AAA", "BBB", "CCC", "DDD", "EEE"]
+    var nameList = ["barrafina", "bourkestreetbakery", "cafedeadend", "cafeloisl", "cafelore"]
+    var images = ["barrafina", "bourkestreetbakery", "cafedeadend", "cafeloisl", "cafelore"]
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return nameList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        cell.textLabel?.text = nameList[indexPath.row]
+        //cell.imageView?.image = UIImage(named:images[indexPath.row])
+        cell.imageView?.image = UIImage(named:images[indexPath.row])
+        return cell
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,29 +38,10 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func showMessage2(sender:UIButton){
-        
-        var emoji = ["👾":"Monster", "👻":"Ghost", "🤓":"Smile"]
-        //var emoji = ["👾":"Monster", "👻":"Ghost", "🤓":"Smile", "🤖":"BOT"]
-        
-        //let selectedButton = sender.titleLabel!.text
-        if let SB = sender.titleLabel?.text
-        {
-            let alertController = UIAlertController(title:SB, message: emoji[SB], preferredStyle: UIAlertControllerStyle.alert)
-        
-            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-            present(alertController, animated: true, completion: nil)
-        }
-        
-        else{
-            let alertController = UIAlertController(title:"SB", message: "emoji[SB]"			, preferredStyle: UIAlertControllerStyle.alert)
-            
-            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-            present(alertController, animated: true, completion: nil)
-        }
+/*
+    override var prefersStatusBarHidden: Bool {
+        return true
     }
-
-    
-
+*/
 }
 
