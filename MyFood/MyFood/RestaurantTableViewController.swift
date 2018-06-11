@@ -26,6 +26,8 @@ class RestaurantTableViewController: UITableViewController {
     }
 
     var nameList = ["barrafina", "bourkestreetbakery", "cafedeadend", "cafeloisl", "cafelore"]
+    var locationList = ["AAA", "BBB", "CCC", "DDD", "EEE"]
+    var typeList = ["A-class", "B-class", "C-class", "D-class", "E-class"]
     var imageList = ["barrafina", "bourkestreetbakery", "cafedeadend", "cafeloisl", "cafelore"]
     
     // MARK: - Table view data source
@@ -42,12 +44,16 @@ class RestaurantTableViewController: UITableViewController {
 
     //  Cell Content
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! RestaurantTableViewCell
 
         // Configure the cell...
         //cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = nameList[indexPath.row]
-        cell.imageView?.image = UIImage(named:imageList[indexPath.row])
+        //cell.textLabel?.text = nameList[indexPath.row]
+        //cell.imageView?.image = UIImage(named:imageList[indexPath.row])
+        cell.nameLabel.text = nameList[indexPath.row]
+        cell.localtionLabel.text = locationList[indexPath.row]
+        cell.typeLabel.text = typeList[indexPath.row]
+        cell.myImageView.image = UIImage(named:imageList[indexPath.row])
 
         return cell
     }

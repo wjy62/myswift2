@@ -13,7 +13,12 @@ class RestaurantTableViewCell: UITableViewCell {
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var localtionLabel: UILabel!
     @IBOutlet var typeLabel: UILabel!
-    @IBOutlet var myImageView: UIImageView!
+    @IBOutlet var myImageView: UIImageView! {
+        didSet{
+            myImageView.layer.cornerRadius = myImageView.layer.bounds.width / 2
+            myImageView.clipsToBounds = true
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
