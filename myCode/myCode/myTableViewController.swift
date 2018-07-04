@@ -39,6 +39,24 @@ class myTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return nameList.count
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let optionMenu = UIAlertController(title: "MenuTititle", message: "MenuMessage", preferredStyle: .actionSheet)
+        
+        let myCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        optionMenu.addAction(myCancel)
+        
+        let myCheckIn = UIAlertAction(title: "Check-In", style: .default, handler: {(action:UIAlertAction) -> Void in
+            
+            let xCell = tableView.cellForRow(at: indexPath)
+            xCell?.accessoryType = .checkmark
+        })
+        optionMenu.addAction(myCheckIn)
+        
+        self.present(optionMenu, animated: true, completion: nil)
+    }
 
     ///*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -53,7 +71,9 @@ class myTableViewController: UITableViewController {
         return cell
     }
     //*/
-
+    
+    
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
