@@ -1,9 +1,9 @@
 //
 //  myTableViewController.swift
-//  myCode
+//  MyTest09
 //
-//  Created by Flower on 2018/7/4.
-//  Copyright © 2018年 KFlower. All rights reserved.
+//  Created by WJY on 2018/6/13.
+//  Copyright © 2018年 WJY. All rights reserved.
 //
 
 import UIKit
@@ -12,8 +12,7 @@ class myTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        tableView.cellLayoutMarginsFollowReadableWidth = true
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -27,10 +26,7 @@ class myTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
-    var nameList = ["AA", "BB", "CC", "DD", "EE", "FF", "GG", "HH", "II", "JJ"]
-    var typeList = ["T1", "T2", "T3", "T4", "T5", "T6", "T7", "T8", "T9", "T10"]
-    var checkList = Array(repeating: false, count: 10)
+    var nameList = ["AA", "BB", "CC", "DD", "EE", "FF"]
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -41,58 +37,28 @@ class myTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return nameList.count
     }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let optionMenu = UIAlertController(title: "MenuTititle", message: "MenuMessage", preferredStyle: .actionSheet)
-        // this is for iPad..........
-        if let popOverController = optionMenu.popoverPresentationController{
-            if let cell = tableView.cellForRow(at: indexPath){
-                popOverController.sourceView = cell
-                popOverController.sourceRect = cell.bounds
-            }
-        }
-        
-        let myCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        
-        optionMenu.addAction(myCancel)
-        
-        let myCheckIn = UIAlertAction(title: "Check-In", style: .default, handler: {(action:UIAlertAction) -> Void in
-            
-            let xCell = tableView.cellForRow(at: indexPath)
-            xCell?.accessoryType = .checkmark
-            self.checkList[indexPath.row] = true
-        })
-        optionMenu.addAction(myCheckIn)
-        
-        self.present(optionMenu, animated: true, completion: nil)
-    }
 
     ///*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! myTableViewCell
-
+        
         // Configure the cell...
-        
         cell.lbName.text = nameList[indexPath.row]
-        cell.lbType.text = typeList[indexPath.row]
-        cell.myImage.image = UIImage(named: "homei.png")
-        
-        
-        if checkList[indexPath.row]{
-            cell.accessoryType = .checkmark
-        }
-        else{
-            cell.accessoryType = .none
-        }
-        
- 
+        cell.myImage.image = UIImage(named:"homei")
         return cell
     }
     //*/
     
-    
-    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let myMenu = UIAlertController(title: "myTitle", message: "you have clicked Me", preferredStyle: .actionSheet)
+        let myAction = UIAlertAction(title: "myAction", style: .cancel, handler: nil)
+        
+        myMenu.addAction(myAction)
+        present(myMenu, animated: true, completion: nil)
+        
+    }
+
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
