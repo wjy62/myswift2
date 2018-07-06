@@ -15,8 +15,8 @@ class RestaurantTableViewCell: UITableViewCell {
     @IBOutlet var typeLabel: UILabel!
     @IBOutlet var myImageView: UIImageView! {
         didSet{
-            myImageView.layer.cornerRadius = myImageView.layer.bounds.width / 2
-            myImageView.clipsToBounds = true
+            //myImageView.layer.cornerRadius = myImageView.layer.bounds.width / 2
+            //myImageView.clipsToBounds = true
         }
     }
     

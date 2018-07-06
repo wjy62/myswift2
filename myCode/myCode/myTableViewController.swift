@@ -44,28 +44,54 @@ class myTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let optionMenu = UIAlertController(title: "MenuTititle", message: "MenuMessage", preferredStyle: .actionSheet)
-        // this is for iPad..........
-        if let popOverController = optionMenu.popoverPresentationController{
-            if let cell = tableView.cellForRow(at: indexPath){
-                popOverController.sourceView = cell
-                popOverController.sourceRect = cell.bounds
+        if checkList[indexPath.row]{
+            let optionMenu = UIAlertController(title: "XXX-MenuTititle", message: "Check- out-MenuMessage", preferredStyle: .actionSheet)
+            // this is for iPad..........
+            if let popOverController = optionMenu.popoverPresentationController{
+                if let cell = tableView.cellForRow(at: indexPath){
+                    popOverController.sourceView = cell
+                    popOverController.sourceRect = cell.bounds
+                }
             }
-        }
-        
-        let myCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        
-        optionMenu.addAction(myCancel)
-        
-        let myCheckIn = UIAlertAction(title: "Check-In", style: .default, handler: {(action:UIAlertAction) -> Void in
             
-            let xCell = tableView.cellForRow(at: indexPath)
-            xCell?.accessoryType = .checkmark
-            self.checkList[indexPath.row] = true
-        })
-        optionMenu.addAction(myCheckIn)
-        
-        self.present(optionMenu, animated: true, completion: nil)
+            let myCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            
+            optionMenu.addAction(myCancel)
+            
+            let unCheckIn = UIAlertAction(title: "Check-out", style: .default, handler: {(action:UIAlertAction) -> Void in
+                
+                let xCell = tableView.cellForRow(at: indexPath)
+                xCell?.accessoryType = .none
+                self.checkList[indexPath.row] = false
+            })
+            optionMenu.addAction(unCheckIn)
+            
+            self.present(optionMenu, animated: true, completion: nil)
+        }
+        else{
+            let optionMenu = UIAlertController(title: "MenuTititle", message: "MenuMessage", preferredStyle: .actionSheet)
+            // this is for iPad..........
+            if let popOverController = optionMenu.popoverPresentationController{
+                if let cell = tableView.cellForRow(at: indexPath){
+                    popOverController.sourceView = cell
+                    popOverController.sourceRect = cell.bounds
+                }
+            }
+            
+            let myCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            
+            optionMenu.addAction(myCancel)
+            
+            let myCheckIn = UIAlertAction(title: "Check-In", style: .default, handler: {(action:UIAlertAction) -> Void in
+                
+                let xCell = tableView.cellForRow(at: indexPath)
+                xCell?.accessoryType = .checkmark
+                self.checkList[indexPath.row] = true
+            })
+            optionMenu.addAction(myCheckIn)
+            
+            self.present(optionMenu, animated: true, completion: nil)
+        }
     }
 
     ///*
