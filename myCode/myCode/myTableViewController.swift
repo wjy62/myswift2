@@ -119,7 +119,7 @@ class myTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
-        let delAction = UIContextualAction(style: .normal, title: "Delete") { (action, myView, completionHandler) in
+        let delAction = UIContextualAction(style: .destructive, title: "Delete") { (action, myView, completionHandler) in
             
             self.nameList.remove(at: indexPath.row)
             self.typeList.remove(at: indexPath.row)
@@ -130,7 +130,16 @@ class myTableViewController: UITableViewController {
             completionHandler(true)
         }
         
-        let swipeConfiguration = UISwipeActionsConfiguration(actions: [delAction])
+        
+        let moreAction = UIContextualAction(style: .normal, title: "More") { (action, myView, completionHandler) in
+            
+            let moreActivity = UIActivityViewController(activityItems: ["MMMore"], applicationActivities: nil)
+            
+            self.present(moreActivity, animated: true, completion: nil)
+            completionHandler(true)
+            
+            }
+        let swipeConfiguration = UISwipeActionsConfiguration(actions: [delAction, moreAction])
         
         return swipeConfiguration
     }
